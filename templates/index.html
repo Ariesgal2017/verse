@@ -1,0 +1,11 @@
+<header style="height:fit-content; font-size:80px; background-color: crimson;">
+<img src="https://images.cooltext.com/5528576.png" style="height:30%; width:100%; align-content: center"/>
+</header>
+<p>welcome, {{request.user.username}}</p>
+<div className="userfield">
+<em>not {{request.user.username}}? <a href='logout/'>logout</a></em>
+</div>
+</div>
+{% for bar in verse %}
+ {{bar}}
+{% endfor %}

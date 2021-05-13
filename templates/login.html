@@ -1,0 +1,13 @@
+
+<img src="https://images.cooltext.com/5528576.png" style="height:30%; width:100%; align-content: center"/>
+<body style="background-image:url('https://static7.depositphotos.com/1003371/704/i/450/depositphotos_7041023-stock-photo-abstract-fractal-background.jpg'); background-repeat: no-repeat; background-size: 100% 100%; align-content: center;"
+{% block content %}
+<a href='/register'><button style="font-size:60px;">Register</button></a>
+<h1 style="color: white; font-size:100px;">Log In</h1>
+<form method="post" style="align-items:center; font-size:60px; color:white; margin-left: 180px">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" style="font-size:60px;">Log In</button>
+</form>
+</body>
+{% endblock %}
