@@ -1,11 +1,19 @@
 {
   "name": "verse",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ariesgal2017/verse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ariesgal2017/verse/issues"
+  },
+  "homepage": "https://github.com/Ariesgal2017/verse#readme",
+  "description": ""
 }

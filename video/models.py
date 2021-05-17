@@ -24,7 +24,7 @@ class Video(models.Model):
     likes = models.IntegerField(default=0)
     timestamp = models.DateTimeField(default=timezone.now)
     caption = models.CharField(max_length=70)
-    sound = models.ForeignKey("video.Sound", related_name="vid_sound", on_delete=models.CASCADE, null=True, blank=True,)
+    beat = models.ForeignKey("video.Sound", related_name="vid_sound", on_delete=models.CASCADE, null=True, blank=True,)
 
     def __str__(self):
         return f"{self.caption} | {self.timestamp}"
@@ -34,6 +34,9 @@ class Sound(models.Model):
     creator = models.ForeignKey("verser.CustomUser", related_name="sound_creator", on_delete=models.CASCADE)
     original_video = models.ForeignKey("video.Video", related_name="og_sound", on_delete=models.CASCADE)
     audio_file = models.FileField(upload_to=user_sound_path)
+
+    def __str__(self):
+        return f"original sound - {self.creator.username}"
 
 
 class Comment(models.Model):

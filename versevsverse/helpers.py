@@ -1,7 +1,12 @@
 from django.contrib.auth import authenticate, login
-
+import os
+import environ
 import random
 
+
+environ.Env.read_env()
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 def auth_user(request, data):
         if '@' in data['username']:
             user = authenticate(request, email=data['username'], password=data["password"])
@@ -50,18 +55,15 @@ def generate_html(email, token):
                         font-family: Helvetica;
                         box-sizing: border-box;
                         }}
-
                         a {{
                         text-decoration: none;
                         background-color: transparent;
                         outline: none;
                         cursor: pointer;
                         }}
-
                         html.ar {{
                         direction: rtl;
                         }}
-
                         html.ar input {{
                         text-align: right;
                         }}
@@ -87,7 +89,6 @@ def generate_html(email, token):
                             <p style="margin-bottom:20px;color: rgb(22,24,35);font-weight: bold;">{token}</p>
                             <p style="margin-bottom:20px;">Verification codes expire after 48 hours.</p>
                             <p style="margin-bottom:20px;">If you didn&#39;t request this code, you can ignore this message.</p>
-
                             <p>VibeTube Support Team</p>
                             <p style="word-break: break-all;">
                                 VibeTube Help Center: <br>
@@ -117,3 +118,18 @@ def generate_html(email, token):
                     </div>
                 </body>
                 """
+
+def upload_file(file_name, bucket, object_name=None):
+    import logging
+    import boto3
+    from botocore.exceptions import ClientError
+
+    if object_name is None:
+        object_name = file_name
+    s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    try:
+        response = s3_client.upload_file(file_name, bucket, object_name)
+    except ClientError as e:
+        logging.error(e)
+        return False
+    return True

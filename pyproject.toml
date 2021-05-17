@@ -6,7 +6,7 @@ authors = ["jennifer <ariesgal2017@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "^3.2"
+Django = "^3.2.3"
 
 [tool.poetry.dev-dependencies]
 
