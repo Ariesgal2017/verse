@@ -19,7 +19,7 @@ SECRET_KEY = os.environ["secret_key"]
 DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
-SITE_URL = "http://vibetube.herokuapp.com"
+SITE_URL = "http://versevsverse.herokuapp.com"
 
 
 # Application definition
